@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            min-height: 100vh;
+            font-family: "Poppins";
+        }
+
+        .wrapper{
+            max-width:1025px;
+            width: 100%;
+            margin:100px auto;
+            padding: 10px 20px;
+        }
+
+        .booklist_wrapper{
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .title_wrapper{
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .title{
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 46px;
+            color: #000;
+        }
+
+        .booklist_write{
+            display: flex;
+            flex-direction:column;
+            gap: 15px;
+        }
+
+        .input_controller{
+            width: 100%;
+            height: 36px;
+            border: 1px solid rgba(30,39,46,.1);
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 500;
+            color: #000;
+            padding: 5px 15px;
+            border-radius:5px;
+        }
+
+        .tbl{
+            text-align: center;
+            /* border-collapse: collapse; */
+        }
+
+        .tbl tr{
+            background-color: #efefef;
+        }
+        .tbl td,
+        .tbl th{
+            font-size: 14px;
+            padding: 7px;
+        }
+        #submitBtn{
+            cursor: pointer;
+        }
+
+        #bookList tr:nth-child(even){
+            background-color: rgba(30,39,46,.1);
+        }
+
+        .tbl td{
+            font-weight: 400;
+            color: #272727;
+        }
+        .tbl th{
+            font-weight: 600;
+            color: #000;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="title_wrapper">
+            <h2 class="title">Simple Booklist App</h2>
+        </div>
+        <div class="booklist_wrapper">
+            <form action="#">
+                <div class="booklist_write">
+                    <input type="text" class="input_controller" id="title" placeholder="Enter Title">
+                    <input type="text" class="input_controller" id="author" placeholder="Enter Author name">
+                    <input type="text" class="input_controller" id="year" placeholder="Enter Year">
+    
+                    <button type="button" class="input_controller" id="submitBtn">Submit Button</button>
+                </div>
+            </form>
+
+
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody id="bookList"></tbody>
+            </table>
+
+        </div>
+    </div>
+    
+<script>
+
+
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const year = document.getElementById("year");
+    const submitBtn = document.getElementById("submitBtn");
+    const bookList = document.getElementById("bookList");
+
+
+    submitBtn.addEventListener("click" , function(){
+
+        if(title.value == "" && author.value == "" && year.value == ""){
+            alert("Please fill up all input filed")
+        }
+        else{
+            const newRow = document.createElement("tr");
+            const newTd1 = document.createElement("td");
+            const newTd2 = document.createElement("td");
+            const newTd3 = document.createElement("td");
+
+
+            newTd1.innerHTML = title.value;
+            newRow.appendChild(newTd1);
+            bookList.appendChild(newRow);
+
+            newTd2.innerHTML = author.value;
+            newRow.appendChild(newTd2);
+            bookList.appendChild(newRow);
+
+            newTd3.innerHTML = year.value;
+            newRow.appendChild(newTd3);
+            bookList.appendChild(newRow);
+        }
+    })
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
